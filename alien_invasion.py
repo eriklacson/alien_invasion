@@ -1,6 +1,9 @@
 import sys
 import pygame
 
+#import settings class
+from settings import Settings
+
 def run_game():
 	# Initialize game and create a screen object.
 	pygame.init()
