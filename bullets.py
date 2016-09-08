@@ -7,7 +7,7 @@ class Bullet(Sprite):
 	def __init__(self, ai_settings, screen, ship):
 		"""Create a bullet object at the ship's current position."""
 
-		super(Bullet, self).__
+		super(Bullet, self).__init__()
 
 		self.screen = screen
 

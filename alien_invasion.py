@@ -1,5 +1,7 @@
 import pygame
 
+from pygame.sprite import Group
+
 
 #import settings class
 from settings import Settings
