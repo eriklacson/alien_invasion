@@ -38,7 +38,11 @@ def run_game():
 
 		# Redraw the screen during each pass through the loop.
 		ship.update()
-		bullets.update()
+
+		#update bullets status
+		gf.update_bullets(bullets)
+
+		#redraw screen
 		gf.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()
