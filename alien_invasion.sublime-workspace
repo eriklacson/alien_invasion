@@ -67,6 +67,26 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "game_functions.py",
+			"settings":
+			{
+				"buffer_size": 1921,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import pygame\nfrom pygame.sprite import Sprite\n\n\tclass Alien(Sprite):\n\t\"\"\"A class to represent a single alien in the fleet.\"\"\"\n\n\t\tdef __init__(self, ai_settings, screen):\n\t\t\"\"\"Initialize the alien and set its starting position.\"\"\"\n\t\t\t\n\t\t\tsuper(Alien, self).__init__()\n\t\t\tself.screen = screen\n\t\t\tself.ai_settings = ai_settings\n\n\t\t\t# Load the alien image and set its rect attribute.\n\t\t\tself.image = pygame.image.load('images/alien.bmp')\n\t\t\tself.rect = self.image.get_rect()\n\n\t\t\t# Start each new alien near the top left of the screen.\n\t\t\tself.rect.x = self.rect.width\n\t\t\tself.rect.y = self.rect.height\n\n\t\t\t",
+			"file": "aliens.py",
+			"file_size": 0,
+			"file_write_time": 131351699310894547,
+			"settings":
+			{
+				"buffer_size": 603,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -165,8 +185,66 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "game_functions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1921,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								756,
+								756
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "aliens.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 603,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								603,
+								603
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
