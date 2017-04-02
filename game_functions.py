@@ -30,11 +30,12 @@ def check_keyup_events(event, ship):
 	elif event.key == pygame.K_LEFT:
 		ship.moving_left = False
 
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, alien, ship, bullets):
 	"""Update images on the screen and flip to the new screen."""
 	# Redraw the screen during each pass through the loop.
 	screen.fill(ai_settings.bg_color)
 	ship.blitme()
+	alien.blitme()
 	ship.update()
 	# Redraw all bullets behind ship and aliens.
 	for bullet in bullets.sprites():
