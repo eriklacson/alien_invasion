@@ -12,6 +12,9 @@ from ship import Ship
 #import game_functions class
 import game_functions as gf
 
+#import game stats
+from game_stats import GameStats
+
 
 
 def run_game():
@@ -35,6 +38,9 @@ def run_game():
 	# Create the fleet of aliens.
 	gf.create_fleet(ai_settings, screen, ship, aliens)
 
+	# Create an instance to store game statistics.
+	stats = GameStats(ai_settings)
+
 	# Start the main loop for the game.
 	while True:
 
@@ -48,7 +54,7 @@ def run_game():
 		gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
 
 		#update aliens position
-		gf.update_aliens(ai_settings, aliens)
+		gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
 
 		#redraw screen
 		gf.update_screen(ai_settings, screen, aliens, ship, bullets)
