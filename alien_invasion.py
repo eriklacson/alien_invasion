@@ -47,14 +47,17 @@ def run_game():
 		# Watch for keyboard and mouse events.
 		gf.check_events(ai_settings, screen, ship, bullets)
 
-		# Redraw the screen during each pass through the loop.
-		ship.update()
+		if stats.game_active:
+			"""run of there are ships left"""
+			
+			# Redraw the screen during each pass through the loop.
+			ship.update()
 
-		#update bullets status
-		gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+			#update bullets status
+			gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
 
-		#update aliens position
-		gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+			#update aliens position
+			gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
 
 		#redraw screen
 		gf.update_screen(ai_settings, screen, aliens, ship, bullets)
