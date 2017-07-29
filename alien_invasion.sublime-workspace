@@ -105,7 +105,7 @@
 			"file": "game_functions.py",
 			"settings":
 			{
-				"buffer_size": 6684,
+				"buffer_size": 6779,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -338,15 +338,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6684,
+						"buffer_size": 6779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1099,
-								1099
+								6563,
+								6563
 							]
 						],
 						"settings":
@@ -355,7 +355,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3009.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
