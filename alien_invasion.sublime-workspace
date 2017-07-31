@@ -87,7 +87,16 @@
 			"file": "game_stats.py",
 			"settings":
 			{
-				"buffer_size": 393,
+				"buffer_size": 489,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scoreboard.py",
+			"settings":
+			{
+				"buffer_size": 2484,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -96,7 +105,7 @@
 			"file": "alien_invasion.py",
 			"settings":
 			{
-				"buffer_size": 1552,
+				"buffer_size": 1673,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -105,42 +114,60 @@
 			"file": "game_functions.py",
 			"settings":
 			{
-				"buffer_size": 6779,
+				"buffer_size": 7586,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "aliens.py",
+			"file": "settings.py",
 			"settings":
 			{
-				"buffer_size": 1111,
+				"buffer_size": 1468,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"contents": "import pygame\nfrom pygame.sprite import Sprite\n\nclass Ship(Sprite):\n\n\tdef __init__(self, ai_settings,screen):\n\t\t\"\"\"Initialize the ship and set its starting position.\"\"\"\n\t\tsuper(Ship, self).__init__()\n\t\tself.screen = screen\n\t\tself.ai_settings = ai_settings\n\n\t\t# Load the ship image and get its rect.\n\t\tself.image = pygame.image.load('images/ship.bmp')\n\t\tself.rect = self.image.get_rect()\n\t\tself.screen_rect = screen.get_rect()\n\n\t\t# Start each new ship at the bottom center of the screen.\n\t\tself.rect.centerx = self.screen_rect.centerx\n\t\tself.rect.bottom = self.screen_rect.bottom\n\n\t\t# Store a decimal value for the ship's center. \n\t\tself.center = float(self.rect.centerx)\n\n\t\t# Movement flag\n\t\tself.moving_right = False\n\t\tself.moving_left = False\n\t\t\n\n\tdef update(self):\n\t\t\"\"\"Update the ship's position based on the movement flag.\"\"\"\n\t\t\n\t\t# Update the ship's center value, not the rect.\n\t\tif self.moving_right and self.rect.right < self.screen_rect.right:\n\t\t\tself.center += self.ai_settings.ship_speed_factor\n\t\tif self.moving_left and self.rect.left > 0:\n\t\t\tself.center -= self.ai_settings.ship_speed_factor\n\n\t\t# Update rect object from self.center.\n\t\tself.rect.centerx = self.center\n\t\n\tdef blitme(self):\n\t\t\"\"\"Draw the ship at its current location.\"\"\"\n\t\tself.screen.blit(self.image, self.rect)\n\n\tdef center_ship(self):\n\t\t\"\"\"Center the ship on the screen.\"\"\"\n\t\tself.center = self.screen_rect.centerx",
 			"file": "ship.py",
+			"file_size": 1394,
+			"file_write_time": 131457956656388490,
 			"settings":
 			{
-				"buffer_size": 1324,
+				"buffer_size": 1395,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "import pygame.font\n\n\nclass Button():\n\t\n\tdef __init__(self, ai_settings, screen, msg):\n\t\t\"\"\"Initialize button attributes.\"\"\"\n\t\tself.screen = screen\n\t\tself.screen_rect = screen.get_rect()\n\n\n\t\t# Set the dimensions and properties of the button.\n\t\tself.width, self.height = 200, 50\n\t\tself.button_color = (0, 255, 0)\n\t\tself.text_color = (255, 255, 255)\n\t\tself.font = pygame.font.SysFont(None, 48)\n\n\t\t# Build the button's rect object and center it.\n\t\tself.rect = pygame.Rect(0, 0, self.width, self.height)\n\t\tself.rect.center = self.screen_rect.center\n\n\t\t# The button message needs to be prepped only once.\n\t\tself.prep_msg(msg)\n\n\tdef prep_msg(self, msg):\n\t\t\"\"\"Turn msg into a rendered image and center text on the button.\"\"\"\n\t\tself.msg_image = self.font.render(msg, True, self.text_color,self.button_color)\n\t\tself.msg_image_rect = self.msg_image.get_rect()\n\t\tself.msg_image_rect.center = self.rect.center\n\n\tdef draw_button(self):\n\t\t# Draw blank button and then draw message.\n\t\tself.screen.fill(self.button_color, self.rect)\n\t\tself.screen.blit(self.msg_image, self.msg_image_rect)\t",
 			"file": "button.py",
-			"file_size": 1086,
-			"file_write_time": 131442435855716739,
 			"settings":
 			{
 				"buffer_size": 1072,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
 	],
 	"build_varint": "",
 	"command_palette":
@@ -242,7 +269,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -271,7 +298,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -280,15 +307,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 393,
+						"buffer_size": 489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								255,
-								255
+								489,
+								489
 							]
 						],
 						"settings":
@@ -300,127 +327,213 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "alien_invasion.py",
+					"file": "scoreboard.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1552,
+						"buffer_size": 2484,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1097,
-								1097
+								1804,
+								1804
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 399.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "game_functions.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6779,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6563,
-								6563
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3009.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "aliens.py",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1111,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "ship.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1324,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								68,
-								68
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 549.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
+					"buffer": 3,
+					"file": "alien_invasion.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1524,
+								1524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 722.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "game_functions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5716,
+								5716
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3097.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "game_functions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6850,
+								6850
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3306.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "game_functions.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2247,
+								2247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1026.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								392,
+								392
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
 					"buffer": 6,
+					"file": "ship.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								628,
+								628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "button.py",
 					"semi_transient": false,
 					"settings":
@@ -445,7 +558,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -457,7 +570,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"layout":
 	{
@@ -482,6 +595,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -490,7 +607,7 @@
 	{
 		"height": 97.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
 	"project": "alien_invasion.sublime-project",
 	"replace":
 	{
